@@ -72,7 +72,7 @@ export function LoginAndRegister() {
             <h1>Login Account</h1>
 
             <InputText
-              type="text"
+              type="email"
               placeholder="Digite seu e-mail"
               width={25}
               value={email}
@@ -107,7 +107,7 @@ export function LoginAndRegister() {
               onChange={(e) => setName(e.target.value)}
             />
             <InputText
-              type="text"
+              type="email"
               placeholder="Digite seu e-mail"
               width={25}
               value={emailRegister}
