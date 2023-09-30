@@ -4,7 +4,7 @@ import { IMovie } from "../../Interfaces/IMovies";
 import { useQuery } from "react-query";
 import { ImageUrl, apiKey, moviesURL } from "../../Services";
 import { Button } from "../Buttom";
-import { Loading } from "../Loading";
+// import { Loading } from "../Loading";
 import { useState } from "react";
 import { Details } from "../../Pages/Details";
 
@@ -42,7 +42,7 @@ export function CardsMovie() {
   return (
     <>
       {isLoading ? (
-        <Loading />
+        <h1>Loading.....</h1>
       ) : (
         <>
           <S.HeaderMyFavorites>

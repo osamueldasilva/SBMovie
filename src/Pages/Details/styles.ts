@@ -14,6 +14,7 @@ export const Container = styled.section`
 
   overflow: hidden;
   cursor: default;
+  
 `
 
 export const modalDetails = styled.main`
@@ -79,5 +80,19 @@ export const modalDetails = styled.main`
       }
     }
   }
+
+  @media (max-width: 768px) {
+        width: 18rem;
+        height: 27rem;
+        font-size: 14px;
+
+        img {
+          display: none;
+        }
+
+        ul li  {
+          gap: 0;
+        }
+    }
 
   `
