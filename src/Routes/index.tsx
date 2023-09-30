@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Home } from "../Pages/Home";
+import { ComedyMovies } from "../Pages/ComedyMovies";
 import { LoginAndRegister } from "../Pages/LoginAndRegister";
 
 export function RoutesProvier() {
@@ -7,7 +7,7 @@ export function RoutesProvier() {
     <Routes>
       <Route path="/" element={<Navigate to="/Login" />} />
       <Route path="/Login" element={<LoginAndRegister />} />
-      <Route path="/Home" element={<Home />} />
+      <Route path="/ComedyMovies" element={<ComedyMovies />} />
     </Routes>
   );
 }

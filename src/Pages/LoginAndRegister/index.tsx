@@ -3,6 +3,7 @@ import { InputText } from "../../Components/InputText";
 import * as S from "./styles";
 import { Button } from "../../Components/Buttom";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export function LoginAndRegister() {
   const [email, setEmail] = useState("");
@@ -21,12 +22,15 @@ export function LoginAndRegister() {
     setRegister(false);
   }
 
+  const navigate = useNavigate();
+
   function handleLogin() {
     const storedEmail = localStorage.getItem("@SBMovie:Email");
     const storedPassword = localStorage.getItem("@SBMovie:Password");
 
     if (storedEmail === email && storedPassword === password) {
       toast.success("Login realizado com sucesso");
+      navigate('/ComedyMovies')
     } else {
       toast.error("Email ou senha incorreto");
       setRegister(true);
