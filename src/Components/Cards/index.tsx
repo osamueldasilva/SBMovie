@@ -2,15 +2,18 @@ import * as S from "./styles";
 import axios from "axios";
 import { IMovie } from "../../Interfaces/IMovies";
 import { useQuery } from "react-query";
-import { ImageUrl, apiKey, moviesURL } from "../../Services";
+import { ImageUrl } from "../../Services";
 import { Button } from "../Buttom";
 // import { Loading } from "../Loading";
 import { useState } from "react";
 import { Details } from "../../Pages/Details";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Loading } from "../Loading";
 
 export function CardsMovie() {
-  const routeApiMovie = `${moviesURL}/top_rated?${apiKey}`;
   const [detailsId, setDetailsId] = useState<number | null>(null);
+  const [countPage, setCountPage] = useState<number>(1);
+  const routeApiMovie = "https://api.themoviedb.org/3/movie/popular";
 
   function modalDetails(id: number) {
     setDetailsId(id);
@@ -21,15 +24,17 @@ export function CardsMovie() {
   }
 
   const { data: dataMovies, isLoading } = useQuery(
-    ["DataMovies"],
+    ["DataMovies", countPage],
     getDataMovie
   );
-
   async function getDataMovie() {
     try {
       const { data } = await axios.get<IMovie>(routeApiMovie, {
+        params: { language: "en-US", page: countPage },
         headers: {
-          Authorization: "Bearer 81a887e1a2cf45fbbce0ba27b5cc345f",
+          accept: "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MWE4ODdlMWEyY2Y0NWZiYmNlMGJhMjdiNWNjMzQ1ZiIsInN1YiI6IjY1MTM4NjBiMDc0NWUxMDBhYzU3NjVlNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ln4she-2eGml6cfhpt19bJrxhfDQGFVcSjQEmMqS6eA",
         },
       });
 
@@ -39,14 +44,22 @@ export function CardsMovie() {
     }
   }
 
+  function arrowLeft() {
+    setCountPage((prevState) => prevState - 1);
+  }
+
+  function arrowRigth() {
+    setCountPage((prevState) => prevState + 1);
+  }
+
   return (
     <>
       {isLoading ? (
-        <h1>Loading.....</h1>
+        <Loading />
       ) : (
         <>
           <S.HeaderMyFavorites>
-            <h2>Best movies</h2>
+            <h2>Popular</h2>
             <h2>Total: {dataMovies?.total_results}</h2>
           </S.HeaderMyFavorites>
           <S.ContainerCards>
@@ -95,6 +108,27 @@ export function CardsMovie() {
                 </>
               )
             )}
+            <footer>
+              {countPage === 1 ? undefined : (
+                <ArrowLeft
+                  color="#0284C7"
+                  height={48}
+                  cursor={"pointer"}
+                  onClick={arrowLeft}
+                />
+              )}
+              <h3>{countPage}</h3>
+              <h3>|</h3>
+              <h3>{dataMovies?.total_pages}</h3>
+              {countPage === dataMovies?.total_pages ? undefined : (
+                <ArrowRight
+                  color="#0284C7"
+                  height={48}
+                  cursor={"pointer"}
+                  onClick={arrowRigth}
+                />
+              )}
+            </footer>
           </S.ContainerCards>
         </>
       )}

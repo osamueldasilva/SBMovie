@@ -8,35 +8,43 @@ export const HeaderMyFavorites = styled.div`
 `
 
 export const ContainerCards = styled.div`
-  
     width: 100%;
     height: 100%;
 
-     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 
     @media (max-width: 768px) {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
     
+    footer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 1rem;
+    }
 `
 
+
 export const Card = styled.div`
+    flex-grow: 1;
+    flex-basis: 200;
     cursor: pointer;
     border: 1px solid #0284C7;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 14rem;
-    height: 25rem;
+    max-height: 30rem;
     border-radius: 0.2rem;
+
     
     .ImageCard {
         width: 100%;
@@ -69,7 +77,7 @@ export const Card = styled.div`
         gap: 1rem;
     }
 
-    @media (max-width: 768px) {
+    /* @media (max-width: 768px) {
         width: 16rem;
-    }
+    } */
 `

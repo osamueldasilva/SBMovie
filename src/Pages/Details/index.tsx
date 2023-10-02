@@ -28,7 +28,7 @@ export function Details({
 
   return (
     <S.Container>
-      <S.modalDetails>
+      <S.ModalDetails>
         <header>
           <h2>{title}</h2>
           <div className="closeModal">
@@ -59,7 +59,7 @@ export function Details({
             </ul>
           </div>
         </div>
-      </S.modalDetails>
+      </S.ModalDetails>
     </S.Container>
   );
 }
