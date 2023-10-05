@@ -1,47 +1,47 @@
-import * as S from "./styles";
-import axios from "axios";
-import { IMovie } from "../../Interfaces/IMovies";
 import { useQuery } from "react-query";
-import { ImageUrl } from "../../Services";
-import { Button } from "../Buttom";
-// import { Loading } from "../Loading";
-import { useState } from "react";
-import { Details } from "../../Pages/Details";
+import { ImageUrl, SearchApi, apiKey } from "../../../Services";
+import axios from "axios";
+import { IMovie } from "../../../Interfaces/IMovies";
+import * as S from "../styles";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Loading } from "../Loading";
+import { Button } from "../../../Components/Buttom";
+import { Details } from "../../Details";
+import { useState } from "react";
+import { Loading } from "../../../Components/Loading";
 
-export function CardsMovie() {
+interface IResultsSearch {
+  vlResult: string;
+}
+
+export function ResultsSearch({ vlResult }: IResultsSearch) {
   const [detailsId, setDetailsId] = useState<number | null>(null);
   const [countPage, setCountPage] = useState<number>(1);
-  const routeApiMovie = "https://api.themoviedb.org/3/movie/popular";
 
-  function modalDetails(id: number) {
-    setDetailsId(id);
-  }
+  const searchWithQueryURL = `${SearchApi}?${apiKey}`;
 
-  function closeModal() {
-    setDetailsId(null);
-  }
-
-  const { data: dataMovies, isLoading } = useQuery(
-    ["DataMovies", countPage],
-    getDataMovie
+  const { data: DataSearch, isLoading } = useQuery(
+    ["DataSearch", countPage, vlResult],
+    dataSearchResults
   );
-  async function getDataMovie() {
+
+  async function dataSearchResults() {
     try {
-      const { data } = await axios.get<IMovie>(routeApiMovie, {
-        params: { language: "en-US", page: countPage },
-        headers: {
-          accept: "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MWE4ODdlMWEyY2Y0NWZiYmNlMGJhMjdiNWNjMzQ1ZiIsInN1YiI6IjY1MTM4NjBiMDc0NWUxMDBhYzU3NjVlNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ln4she-2eGml6cfhpt19bJrxhfDQGFVcSjQEmMqS6eA",
-        },
+      const { data } = await axios.get<IMovie>(searchWithQueryURL, {
+        params: { query: vlResult, language: "pt-br", page: countPage },
       });
 
       return data;
     } catch (error) {
       console.log(error);
     }
+  }
+
+  function closeModal() {
+    setDetailsId(null);
+  }
+
+  function modalDetails(id: number) {
+    setDetailsId(id);
   }
 
   function arrowLeft() {
@@ -51,30 +51,33 @@ export function CardsMovie() {
   function arrowRigth() {
     setCountPage((prevState) => prevState + 1);
   }
-
+// TODO ================ DEIXAR FILTROS RESPONSIVOS
   return (
     <>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <>
-          <S.HeaderMyFavorites>
-            <h2>Popular</h2>
-            <h2>Total: {dataMovies?.total_results}</h2>
-          </S.HeaderMyFavorites>
-          <S.ContainerCards>
-            {dataMovies?.results.map(
-              ({
-                vote_count,
-                vote_average,
-                title,
-                poster_path,
-                id,
-                overview,
-                popularity,
-                original_language,
-              }) => (
-                <>
+      <S.ContainerCards>
+        {isLoading ? (
+          <Loading />
+        ) : DataSearch?.total_results === 0 ? (
+          <S.Container>
+            <h2>
+              INFELIZMENTE, NÃO EXISTE NENHUM FILME RELACIONADO AO QUE FOI
+              PESQUISADO😢😢
+            </h2>
+          </S.Container>
+        ) : (
+          <S.Container>
+            <S.ContainerCards>
+              {DataSearch?.results.map(
+                ({
+                  vote_count,
+                  vote_average,
+                  title,
+                  poster_path,
+                  id,
+                  overview,
+                  popularity,
+                  original_language,
+                }) => (
                   <S.Card key={id}>
                     <div className="ImageCard">
                       <img
@@ -105,9 +108,10 @@ export function CardsMovie() {
                       />
                     )}
                   </S.Card>
-                </>
-              )
-            )}
+                )
+              )}
+            </S.ContainerCards>
+
             <footer>
               {countPage === 1 ? undefined : (
                 <ArrowLeft
@@ -119,8 +123,8 @@ export function CardsMovie() {
               )}
               <h3>{countPage}</h3>
               <h3>|</h3>
-              <h3>{dataMovies?.total_pages}</h3>
-              {countPage === dataMovies?.total_pages ? undefined : (
+              <h3>{DataSearch?.total_pages}</h3>
+              {countPage === DataSearch?.total_pages ? undefined : (
                 <ArrowRight
                   color="#0284C7"
                   height={48}
@@ -129,9 +133,9 @@ export function CardsMovie() {
                 />
               )}
             </footer>
-          </S.ContainerCards>
-        </>
-      )}
+          </S.Container>
+        )}
+      </S.ContainerCards>
     </>
   );
 }

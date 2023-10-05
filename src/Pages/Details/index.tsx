@@ -46,16 +46,17 @@ export function Details({
                 {vote_average}
               </li>
               <li>
-                <strong>Amount:</strong> {vote_count}
+                <strong>Votos:</strong> {vote_count}
               </li>
 
               <li>
-                <strong>Preview:</strong>
+                <strong>Visualizações:</strong>
                 {popularity}
               </li>
               <li>
-                <strong>Original language:</strong> {originalLanguage}
+                <strong>Idioma:</strong> {originalLanguage}
               </li>
+              <li></li>
             </ul>
           </div>
         </div>

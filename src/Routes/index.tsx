@@ -1,13 +1,13 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { ComedyMovies } from "../Pages/ComedyMovies";
 import { LoginAndRegister } from "../Pages/LoginAndRegister";
+import { Movies } from "../Pages/Movies";
 
 export function RoutesProvier() {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/Login" />} />
       <Route path="/Login" element={<LoginAndRegister />} />
-      <Route path="/ComedyMovies" element={<ComedyMovies />} />
+      <Route path="/Movies" element={<Movies />} />
     </Routes>
   );
 }

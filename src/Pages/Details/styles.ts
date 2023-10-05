@@ -19,9 +19,9 @@ export const Container = styled.section`
 
 export const ModalDetails = styled.main`
   width: 50rem;
-  height: 25rem;
+  max-height: 30rem;
   background-color: #fafafa;
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -45,7 +45,6 @@ export const ModalDetails = styled.main`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
 
     img {
       height: 20rem;
@@ -53,6 +52,7 @@ export const ModalDetails = styled.main`
     }
 
     .details {
+      padding: 1rem;
       max-height: 20rem;
       display: flex;
       flex-direction: column;
@@ -64,7 +64,8 @@ export const ModalDetails = styled.main`
       ul {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        padding: 0;
+        gap: 0.5rem;
       }
 
       li {
@@ -83,18 +84,18 @@ export const ModalDetails = styled.main`
     
     overflow-y: auto;
 
+    padding: 1rem;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
+
     .informations {
       display: grid;
       place-items: center;
-    }
-  }
 
-  ul {
-    padding: 1rem;
+    }
   }
 `;
