@@ -11,5 +11,12 @@ export const InputsComponent = styled.input`
     color: #0284C7;
 
     font-size: 1rem;
+
+    @media (max-width: 768px) {
+
+        width: 14rem;
+    }
+
+
     
 `

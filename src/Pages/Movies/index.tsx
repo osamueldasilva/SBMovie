@@ -69,7 +69,7 @@ export function Movies() {
             <Loading />
           ) : (
             <>
-              <S.HeaderMyFavorites>
+              <S.HeaderMovies>
                 <div className="Filter">
                   <div></div>
                   {!openFilter ? (
@@ -128,7 +128,7 @@ export function Movies() {
                     <h2>{vlResultProps}</h2>
                   )}
                 </div>
-              </S.HeaderMyFavorites>
+              </S.HeaderMovies>
               <></>
 
               {!openSearch ? (

@@ -6,14 +6,18 @@ interface IButton {
 
 
 export const Container = styled.section`
-    max-width: 100vw;
+    max-width: 100%;
     padding: 1rem;
-    margin: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
+
+
+    h2 {
+        color: #0284C7;
+    }
 
     @media (max-width: 768px) {
         margin: 0;
@@ -37,7 +41,7 @@ export const Header = styled.header`
 
 
 
-export const HeaderMyFavorites = styled.div`
+export const HeaderMovies = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -47,6 +51,7 @@ export const HeaderMyFavorites = styled.div`
         width: 100%;
         display: flex;
         justify-content: space-between;
+
     }
 
     .infMovies {
@@ -70,6 +75,7 @@ export const ContainerCards = styled.div`
 
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
 
@@ -78,6 +84,7 @@ export const ContainerCards = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
     }
     
     
@@ -96,6 +103,7 @@ export const Card = styled.div`
     max-height: 30rem;
     border-radius: 0.2rem;
 
+    padding: 0.5rem;
     
     .ImageCard {
         width: 100%;
@@ -131,7 +139,10 @@ export const Card = styled.div`
 
     @media (max-width: 768px) {
         display: flex;
+        width: 90%;
+        max-height: 80rem;
         padding: 0.5rem;
+
     }
 `
 
@@ -148,4 +159,6 @@ export const Button = styled.button<IButton>`
     &:hover {
         opacity: 0.8; 
     }
+
+    
 `

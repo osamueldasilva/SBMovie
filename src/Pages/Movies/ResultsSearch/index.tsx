@@ -51,7 +51,7 @@ export function ResultsSearch({ vlResult }: IResultsSearch) {
   function arrowRigth() {
     setCountPage((prevState) => prevState + 1);
   }
-// TODO ================ DEIXAR FILTROS RESPONSIVOS
+  // TODO ================ DEIXAR FILTROS RESPONSIVOS
   return (
     <>
       <S.ContainerCards>

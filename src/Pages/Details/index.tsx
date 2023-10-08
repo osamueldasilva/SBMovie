@@ -36,6 +36,7 @@ export function Details({
           </div>
         </header>
         <div className="informations">
+
           {<img src={ImageUrl + poster_path} />}
 
           <div className="details">

@@ -63,9 +63,8 @@ export const ModalDetails = styled.main`
 
       ul {
         display: flex;
-        flex-direction: column;
         padding: 0;
-        gap: 0.5rem;
+        gap: 2rem;
       }
 
       li {
@@ -96,6 +95,12 @@ export const ModalDetails = styled.main`
       display: grid;
       place-items: center;
 
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
   }
 `;
