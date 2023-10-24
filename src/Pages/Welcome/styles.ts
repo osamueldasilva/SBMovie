@@ -22,6 +22,24 @@ export const ContainerImage = styled.main`
         }
     }
 
+    @media (max-width: 768px) {
+        .greetings {
+            padding: 0.5rem;
+
+            h1 {
+                text-align: center;
+            }
+
+            p {
+                width: auto;
+                font-weight: 500;
+            }
+
+           
+        }
+    }
+
+
     @keyframes animate {
     0%{
         transform: translateY(0) rotate(0deg);
@@ -53,7 +71,7 @@ export const ContainerImage = styled.main`
     list-style: none;
     width: 20px;
     height: 20px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
     animation: animate 50s linear infinite;
 }
 

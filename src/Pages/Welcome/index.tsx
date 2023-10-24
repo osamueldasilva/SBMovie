@@ -24,7 +24,7 @@ export function Welcome() {
                 encontrará uma ampla seleção para assistir a qualquer momento.
               </p>
 
-              <Buttom backgroundColor="#065e8a" width={20} onClick={handleLogin}>Começar</Buttom>
+              <Buttom backgroundColor="#061f9a" width={20} onClick={handleLogin}>Começar</Buttom>
 
             </div>
             <li></li>

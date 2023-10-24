@@ -27,5 +27,6 @@ export const Buttom = styled.button<ButtonProps>`
     
 
     @media (max-width: 768px) {
+        width: 80%;
     }
 `
