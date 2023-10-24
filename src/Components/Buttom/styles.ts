@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 interface ButtonProps {
-    width?: number;
-    backgroundColor?: string;
+    width: number;
+    backgroundColor: string;
 }
 
 export const Buttom = styled.button<ButtonProps>`
@@ -25,4 +25,7 @@ export const Buttom = styled.button<ButtonProps>`
         opacity: 0.8; 
     }
     
+
+    @media (max-width: 768px) {
+    }
 `

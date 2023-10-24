@@ -13,8 +13,8 @@ export const InputsComponent = styled.input`
     font-size: 1rem;
 
     @media (max-width: 768px) {
-
-        width: 14rem;
+        font-size: 0.875rem;
+        width: 100%;
     }
 
 

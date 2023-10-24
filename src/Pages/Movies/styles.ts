@@ -20,7 +20,6 @@ export const Container = styled.section`
     }
 
     @media (max-width: 768px) {
-        margin: 0;
 }
 
 footer {
@@ -67,6 +66,20 @@ export const HeaderMovies = styled.div`
         gap: 1rem;
     }
 
+    @media (max-width: 768px) {
+     .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+     }
+        .Filter {
+            width: 100%;
+
+        }
+    }
+    
+
 `
 
 export const ContainerCards = styled.div`
@@ -84,6 +97,8 @@ export const ContainerCards = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
+        margin: 0;
         
     }
     
@@ -139,10 +154,10 @@ export const Card = styled.div`
 
     @media (max-width: 768px) {
         display: flex;
-        width: 90%;
         max-height: 80rem;
         padding: 0.5rem;
 
+        width: 90%;
     }
 `
 
@@ -156,9 +171,15 @@ export const Button = styled.button<IButton>`
     transition: opacity 0.2s; 
     cursor: pointer;
 
+    color: #fafafa;
+    font-weight: 600;
+
     &:hover {
         opacity: 0.8; 
     }
 
+    @media (max-width: 768px) {
+        width: 100%;
+    }
     
 `

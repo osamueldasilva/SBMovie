@@ -1,13 +1,13 @@
-import { useQuery } from "react-query";
-import { ImageUrl, SearchApi, apiKey } from "../../../Services";
 import axios from "axios";
-import { IMovie } from "../../../Interfaces/IMovies";
-import * as S from "../styles";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Button } from "../../../Components/Buttom";
-import { Details } from "../../Details";
 import { useState } from "react";
+import { useQuery } from "react-query";
+import { Button } from "../../../Components/Buttom";
 import { Loading } from "../../../Components/Loading";
+import { IMovie } from "../../../Interfaces/IMovies";
+import { ImageUrl, SearchApi, apiKey } from "../../../Services";
+import { Details } from "../../Details";
+import * as S from "../styles";
 
 interface IResultsSearch {
   vlResult: string;
@@ -51,7 +51,6 @@ export function ResultsSearch({ vlResult }: IResultsSearch) {
   function arrowRigth() {
     setCountPage((prevState) => prevState + 1);
   }
-  // TODO ================ DEIXAR FILTROS RESPONSIVOS
   return (
     <>
       <S.ContainerCards>

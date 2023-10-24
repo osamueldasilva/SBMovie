@@ -1,16 +1,16 @@
-import { Header } from "../../Components/Header";
 import * as S from "./styles";
 
 import axios from "axios";
-import { IMovie } from "../../Interfaces/IMovies";
-import { useQuery } from "react-query";
-import { ImageUrl, apiKey, moviesURL } from "../../Services";
+import { ArrowBigLeft, ArrowLeft, ArrowRight, Eraser, Filter, Search, X } from "lucide-react";
 import { useState } from "react";
-import { Details } from "../../Pages/Details";
-import { ArrowLeft, ArrowRight, Filter, Search, X } from "lucide-react";
-import { Loading } from "../../Components/Loading";
+import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../Components/Buttom";
 import { InputText } from "../../Components/InputText";
+import { Loading } from "../../Components/Loading";
+import { IMovie } from "../../Interfaces/IMovies";
+import { Details } from "../../Pages/Details";
+import { ImageUrl, apiKey, moviesURL } from "../../Services";
 import { ResultsSearch } from "./ResultsSearch";
 
 export function Movies() {
@@ -21,6 +21,8 @@ export function Movies() {
   const [vlResultProps, setVlResultProps] = useState<string>("");
   const [openSearch, setOpenSearch] = useState<boolean>(false);
   const routeApiMovie = `${moviesURL}top_rated?${apiKey}`;
+
+  const navigate = useNavigate()
 
   function modalDetails(id: number) {
     setDetailsId(id);
@@ -59,19 +61,27 @@ export function Movies() {
     setVlResultProps(resultSearch);
   }
 
+  function handleBackWelcome() {
+    navigate('/Welcome');
+  }
+
   return (
     <>
-      <Header />
 
       <S.Container>
+
         <>
+
           {isLoading ? (
             <Loading />
           ) : (
             <>
               <S.HeaderMovies>
+
+
                 <div className="Filter">
-                  <div></div>
+                  <ArrowBigLeft color="#0284C7" cursor={"pointer"} width={32}
+                    height={32} onClick={handleBackWelcome}/> 
                   {!openFilter ? (
                     <>
                       <Filter
@@ -100,18 +110,17 @@ export function Movies() {
                           <Search color="#fafafa" />
                         </S.Button>
 
-                        <Button
-                          onClick={() => {
+                        <S.Button
+                          backgroundColor="#737373" onClick={() => {
                             setResultSearch("");
                             setOpenSearch(false);
-                          }}
-                          text="Limpar filtro"
-                          backgroundColor="#737373"
-                          width={7}
-                        />
+                          }}> <Eraser color="#fafafa" /></S.Button>
+
                         <S.Button
                           backgroundColor="#F63F60"
-                          onClick={() => setopenFilter(false)}
+                          onClick={() => {
+                            setopenFilter(false)
+                          }}
                         >
                           <X color="#fafafa" />
                         </S.Button>

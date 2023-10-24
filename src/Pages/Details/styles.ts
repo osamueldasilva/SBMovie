@@ -15,6 +15,8 @@ export const Container = styled.section`
   cursor: default;
 
   padding: 1rem;
+
+
 `;
 
 export const ModalDetails = styled.main`

@@ -1,13 +1,10 @@
 import styled from "styled-components";
 
 export const Content = styled.section`
-    display: flex;
+    
 `
 
 export const ContainerImage = styled.main`
-    width: 50%;
-    height: 100vh;
-
     .greetings {
         height: 100vh;
         display: flex;
@@ -40,7 +37,7 @@ export const ContainerImage = styled.main`
 
 .background {
     position: fixed;
-    width: 50vw;
+    width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
@@ -75,14 +72,14 @@ export const ContainerImage = styled.main`
     width: 142px;
     height: 142px;
     bottom: -142px;
-    animation-delay: 3s;
+    animation-delay: 2s;
 }
 .background li:nth-child(2) {
     left: 32%;
     width: 224px;
     height: 224px;
     bottom: -224px;
-    animation-delay: 10s;
+    animation-delay: 5s;
 }
 .background li:nth-child(3) {
     left: 31%;
@@ -96,7 +93,7 @@ export const ContainerImage = styled.main`
     width: 160px;
     height: 160px;
     bottom: -160px;
-    animation-delay: 19s;
+    animation-delay: 12s;
 }
 .background li:nth-child(5) {
     left: 20%;
@@ -124,7 +121,7 @@ export const ContainerImage = styled.main`
     width: 101px;
     height: 101px;
     bottom: -101px;
-    animation-delay: 38s;
+    animation-delay: 20s;
 }
 .background li:nth-child(9) {
     left: 69%;
@@ -138,7 +135,7 @@ export const ContainerImage = styled.main`
     width: 119px;
     height: 119px;
     bottom: -119px;
-    animation-delay: 21s;
+    animation-delay: 32s;
 }
 .background li:nth-child(11) {
     left: 58%;
@@ -155,9 +152,6 @@ export const ContainerImage = styled.main`
     animation-delay: 23s;
 }
 
-@media (max-width: 768px) {
-  display: none;
-}
 `
 export const ContainerLogin = styled.main`
     width: 50%;
