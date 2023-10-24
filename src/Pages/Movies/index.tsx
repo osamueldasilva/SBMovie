@@ -80,11 +80,10 @@ export function Movies() {
 
 
                 <div className="Filter">
-
+                  <ArrowBigLeft color="#0284C7" cursor={"pointer"} width={32}
+                    height={32} onClick={handleBackWelcome}/> 
                   {!openFilter ? (
                     <>
-                      <ArrowBigLeft color="#0284C7" cursor={"pointer"} width={32}
-                        height={32} onClick={handleBackWelcome} />
                       <Filter
                         color="#0284C7"
                         width={32}
